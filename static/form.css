@@ -1,0 +1,129 @@
+/* ====== ESTILOS GENERALES ====== */
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 850px;
+    margin: 40px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #222;
+}
+
+/* ====== INPUTS ====== */
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 15px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    outline: none;
+    transition: 0.2s;
+    font-size: 15px;
+    background: #fafafa;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #3b82f6;
+    background: #fff;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* ====== TABLA DE ITEMS ====== */
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+}
+
+.items-table th {
+    background: #3b82f6;
+    color: white;
+    padding: 12px 10px;
+    border-radius: 6px 6px 0 0;
+}
+
+.items-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.items-table input {
+    width: 95%;
+}
+
+/* Alternar colores de filas */
+.items-table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* ====== BOTONES ====== */
+.btn {
+    background: #2563eb;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 20px;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #1d4ed8;
+}
+
+.btn-add {
+    background: #10b981;
+    margin-top: 10px;
+}
+
+.btn-add:hover {
+    background: #059669;
+}
+
+.btn-remove {
+    background: #ef4444;
+}
+
+.btn-remove:hover {
+    background: #dc2626;
+}
+
+/* ====== SEPARADORES ====== */
+.section-title {
+    margin-top: 35px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    border-left: 4px solid #2563eb;
+    padding-left: 10px;
+}

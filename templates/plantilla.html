@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="static/styles.css">
+
+</head>
+
+    <!-- Header -->
+    <header class="header">
+        {% if logo_path %}
+        <img src="{{ logo_path }}" alt="Logo" class="logo">
+        {% endif %}
+        <div class="header-text">
+            <h1>{{ titulo }}</h1>
+            <p>{{ mensaje | safe}}</p>
+        </div>
+    </header>
+
+    <!-- Tabla de items -->
+    <section class="items-section">
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>Examen / Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for it in items %}
+                <tr>
+                    <td>{{ it.name }}</td>
+                    <td>{{ it.qty | default(1) }}</td>
+                    <td>{{ "%.2f"|format(it.price) }}</td>
+                    <td>{{ "%.2f"|format((it.qty|default(1)) * it.price) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Notas -->
+    <section class="notes-section">
+        <h2>Notas adicionales</h2>
+        <p>{{ notas | safe }}</p>
+    </section>
+
+    <!-- Totales -->
+    {% if subtotal or total %}
+    <section class="totals-section">
+        <table class="totals-table">
+            <tr>
+                <td class="label">Subtotal:</td>
+                <td class="value">{{ subtotal | format_currency }}</td>
+            </tr>
+            <tr>
+                <td class="label"><strong>Total:</strong></td>
+                <td class="value"><strong>{{ total | format_currency }}</strong></td>
+            </tr>
+        </table>
+    </section>
+    {% endif %}
+
+    {% if sello_path %}
+    <section class="final_section">
+        <img src = {{sello_path}} alt = "sello" class = "Sello">
+    </section>
+    {%endif%}
+
+    <!-- Footer -->
+    <footer class="footer">
+        {{ footer or ("Proforma generada automáticamente por Simelab • " ~ fecha) }}
+    </footer>
+
+</body>
+</html>

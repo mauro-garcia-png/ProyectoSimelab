@@ -1,0 +1,144 @@
+/* Fuente moderna y profesional */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* ====== RESET BÁSICO ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #FFFFFF;
+    color: #0A1A2F;
+    line-height: 1.6;
+    padding: 40px;
+}
+
+/* ====== HEADER ====== */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 3px solid #00AEEF;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.logo {
+    height: 70px;
+}
+
+.Sello{
+    height: 130px;
+}
+
+.header-text h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #00AEEF;
+}
+
+.header-text p {
+    margin-top: 4px;
+    color: #0A1A2F;
+    font-size: 15px;
+}
+
+/* ====== TABLA DE ITEMS ====== */
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    border: 1px solid #E4E7EB;
+    background: #FFFFFF;
+}
+
+.items-table thead {
+    background: #00AEEF;
+    color: #FFFFFF;
+}
+
+.items-table th, .items-table td {
+    padding: 12px 10px;
+    border: 1px solid #E4E7EB;
+    font-size: 14px;
+}
+
+.items-table tbody tr:nth-child(even) {
+    background: #F5F7FA;
+}
+
+/* precios y números alineados a la derecha */
+.items-table td:nth-child(2),
+.items-table td:nth-child(3),
+.items-table td:nth-child(4) {
+    text-align: right;
+}
+
+/* ====== NOTAS ====== */
+.notes-section {
+    margin-top: 35px;
+}
+
+.notes-section h2 {
+    color: #FF6A00;
+    margin-bottom: 6px;
+    font-size: 18px;
+}
+
+.notes-section p {
+    background: #F5F7FA;
+    padding: 12px 15px;
+    border-left: 4px solid #FF6A00;
+    border-radius: 4px;
+}
+
+/* ====== TOTALES ====== */
+.totals-section {
+    margin-top: 35px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.totals-table {
+    width: 260px;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.totals-table td {
+    padding: 10px 12px;
+}
+
+.totals-table .label {
+    background: #F5F7FA;
+    font-weight: 500;
+}
+
+.totals-table .value {
+    text-align: right;
+}
+
+.totals-table tr:last-child td {
+    font-weight: 600;
+    border-top: 2px solid #00AEEF;
+}
+.final_section {
+    margin-top : 60px;
+    display: flex;
+    align-items: center;
+    gap: 20px;;
+    padding-bottom: 20px;
+}
+
+/* ====== FOOTER ====== */
+.footer {
+    margin-top: 50px;
+    padding-top: 15px;
+    border-top: 3px solid #FF6A00;
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+}

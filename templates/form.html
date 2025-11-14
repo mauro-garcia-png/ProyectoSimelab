@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generar Proforma</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Generar Proforma</h1>
+
+    <form method="POST" action="/generar">
+
+        <!-- Título -->
+        <label for="titulo">Título del documento</label>
+        <input type="text" id="titulo" name="titulo" required>
+
+        <!-- Mensaje -->
+        <label for="mensaje">Mensaje inicial</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Mensaje opcional..."></textarea>
+
+        <!-- ITEMS -->
+        <h2 class="section-title">Ítems de la Proforma</h2>
+
+        <table class="items-table" id="tabla-items">
+            <thead>
+                <tr>
+                    <th>Nombre del producto / examen</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <!-- FILA DE EJEMPLO -->
+                <tr>
+                    <td><input type="text" name="item_nombre" required></td>
+                    <td><input type="number" name="item_cantidad" value="1" min="1"></td>
+                    <td><input type="number" name="item_precio" step="0.01" required></td>
+                    <td><button type="button" class="btn btn-remove" onclick="eliminarFila(this)">X</button></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <button type="button" class="btn btn-add" onclick="agregarFila()">+ Agregar Ítem</button>
+
+        <!-- Notas -->
+        <h2 class="section-title">Notas adicionales</h2>
+        <textarea name="notas" placeholder="Notas adicionales..."></textarea>
+
+        <!-- Botón principal -->
+        <button type="submit" class="btn">Generar Proforma PDF</button>
+    </form>
+</div>
+
+<script>
+    // --- AGREGAR FILA NUEVA ---
+    function agregarFila() {
+        const tbody = document.querySelector("#tabla-items tbody");
+
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+            <td><input type="text" name="item_nombre" required></td>
+            <td><input type="number" name="item_cantidad" value="1" min="1"></td>
+            <td><input type="number" step="0.01" name="item_precio" required></td>
+            <td><button type="button" class="btn btn-remove" onclick="eliminarFila(this)">X</button></td>
+        `;
+
+        tbody.appendChild(fila);
+    }
+
+    // --- ELIMINAR FILA ---
+    function eliminarFila(boton) {
+        const fila = boton.closest("tr");
+        fila.remove();
+    }
+</script>
+
+</body>
+</html>
