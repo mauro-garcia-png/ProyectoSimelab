@@ -9,41 +9,34 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 # Instalar dependencias del sistema necesarias para wkhtmltopdf
-# instalamos wkhtmltopdf y las libs necesarias
 RUN apt-get update && apt-get install -y \
     wget \
     gnupg \
     ca-certificates \
-    fonts-liberation \
-    fontconfig \
-    libxrender1 \
-    libxext6 \
-    libfreetype6 \
-    libpng16-16 \
-    libjpeg62-turbo \
-    libx11-6 \
-    libssl-dev \
-    libxkbcommon0 \
     xfonts-75dpi \
     xfonts-base \
- && rm -rf /var/lib/apt/lists/*
+    libxrender1 \
+    libjpeg62-turbo \
+    libpng16-16 \
+    libssl-dev \
+    libxext6 \
+    fontconfig \
+    && rm -rf /var/lib/apt/lists/*
 
-# Instalar wkhtmltopdf (paquete precompilado)
-# Usamos una versión conocida estable; descargar binario oficial o paquete .deb
-RUN apt-get update && apt-get install -y \
-    wkhtmltopdf \
- && rm -rf /var/lib/apt/lists/*
+# Instalar wkhtmltopdf (versión estable para Debian Bookworm)
+RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bookworm_amd64.deb && \
+    dpkg -i wkhtmltox_0.12.6-1.bookworm_amd64.deb || apt-get --fix-broken install -y && \
+    rm wkhtmltox_0.12.6-1.bookworm_amd64.deb
 
-# Copiar requirements y instalar
+# Copiar requirements e instalar paquetes Python
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar el resto del código
+# Copiar todo el código de la app
 COPY . /app
 
-# Exponer puerto (Render asigna $PORT, usaremos $PORT en gunicorn)
+# Exponer puerto para Render ($PORT)
 ENV PORT 10000
 
-# Comando por defecto usando gunicorn y la variable de entorno PORT
-# Asume que tu app se expone como "app" en app.py: por ejemplo `app = Flask(__name__)`
+# Comando de arranque usando Gunicorn
 CMD exec gunicorn --bind 0.0.0.0:$PORT app:app --workers 3

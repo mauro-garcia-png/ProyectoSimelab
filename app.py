@@ -4,14 +4,15 @@ from datetime import datetime
 import os
 
 path_wkhtml = os.environ.get("WKHTMLTOPDF_PATH", "/usr/bin/wkhtmltopdf")
-logo_path = r"C:/Users/Mauzzz/Desktop/ProyectoSimelab/static/Logo2.png"
-sello_path =r"C:/Users/Mauzzz/Desktop/ProyectoSimelab/static/sello.png"
+logo_path = "static/Logo2.png"
+sello_path = "static/sello.png"
 
 config = pdfkit.configuration(wkhtmltopdf=path_wkhtml)
 
 app = Flask(__name__)
 
-config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
+config = config = pdfkit.configuration(wkhtmltopdf="/usr/local/bin/wkhtmltopdf")
+
 
 options = {
     "enable-local-file-access": "",
