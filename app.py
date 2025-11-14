@@ -4,8 +4,11 @@ from datetime import datetime
 import os
 
 path_wkhtml = os.environ.get("WKHTMLTOPDF_PATH", "/usr/bin/wkhtmltopdf")
-logo_path = "static/Logo2.png"
-sello_path = "static/sello.png"
+logo_path_abs = os.path.abspath("static/Logo2.png")
+sello_path_abs = os.path.abspath("static/sello.png")
+
+logo_path = f"file:///{logo_path_abs.replace(os.sep, '/')}"
+sello_path = f"file:///{sello_path_abs.replace(os.sep, '/')}"
 
 config = pdfkit.configuration(wkhtmltopdf=path_wkhtml)
 
