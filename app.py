@@ -11,7 +11,7 @@ config = pdfkit.configuration(wkhtmltopdf=path_wkhtml)
 
 app = Flask(__name__)
 
-config = config = pdfkit.configuration(wkhtmltopdf="/usr/local/bin/wkhtmltopdf")
+config = pdfkit.configuration()
 
 
 options = {
